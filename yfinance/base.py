@@ -1343,8 +1343,8 @@ class TickerBase:
         data = self._fundamentals.earnings[freq]
         if as_dict:
             dict_data = data.to_dict()
-            dict_data['financialCurrency'] = 'USD' if 'financialCurrency' not in self._earnings else self._earnings[
-                'financialCurrency']
+            if self._earnings != None:  # only if self._earnings to avoid errors
+                dict_data['financialCurrency'] = 'USD' if 'financialCurrency' not in self._earnings else self._earnings['financialCurrency']
             return dict_data
         return data
 
